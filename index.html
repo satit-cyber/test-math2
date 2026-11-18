@@ -1,1 +1,1966 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>แบบฝึกทักษะความน่าจะเป็น ม.4 | ครูสาธิต ศิริวัชน์</title>
+  <style>
+    :root {
+      --bg-page: #f1f5f9;
+      --bg-card: #ffffff;
+      --bg-subtle: #f8fafc;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-light: #64748b;
+      --primary: #1d4ed8;
+      --primary-hover: #1e40af;
+      --primary-soft: #eff6ff;
+      --accent: #0d9488;
+      --accent-soft: #f0fdfa;
+      --success: #15803d;
+      --success-bg: #dcfce7;
+      --danger: #b91c1c;
+      --danger-bg: #fee2e2;
+      --warning: #b45309;
+      --warning-bg: #fef3c7;
+      --border: #cbd5e1;
+      --border-light: #e2e8f0;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
+      --shadow-md: 0 6px 20px rgba(15, 23, 42, 0.08);
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Tahoma, "Noto Sans Thai", sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 60%, #0f766e 100%);
+      color: #ffffff;
+      padding: 1rem 1.25rem;
+      box-shadow: var(--shadow-md);
+      position: sticky;
+      top: 0;
+      z-index: 30;
+    }
+
+    .header-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .brand-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-sub {
+      font-size: 0.82rem;
+      opacity: 0.9;
+      margin-top: 0.15rem;
+    }
+
+    .btn-teacher {
+      background: rgba(255, 255, 255, 0.16);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn-teacher:hover {
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    .btn-teacher:active {
+      transform: scale(0.98);
+    }
+
+    /* Main Container */
+    main {
+      flex: 1;
+      width: 100%;
+      max-width: 920px;
+      margin: 1.5rem auto;
+      padding: 0 1rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-light);
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Meta Badges */
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .badge {
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid #bfdbfe;
+    }
+
+    .badge.teal {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-color: #99f6e4;
+    }
+
+    .badge.amber {
+      background: var(--warning-bg);
+      color: var(--warning);
+      border-color: #fde68a;
+    }
+
+    /* Welcome / Login Section */
+    .hero-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: 0.96rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .info-box {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1rem;
+    }
+
+    .info-label {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      font-weight: 600;
+    }
+
+    .info-val {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-top: 0.15rem;
+    }
+
+    .form-group {
+      max-width: 360px;
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+      color: var(--text-main);
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-size: 1.1rem;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input[type="number"]:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.35rem;
+      font-size: 0.98rem;
+      font-weight: 700;
+      border-radius: var(--radius-md);
+      border: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(29, 78, 216, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+    }
+
+    .btn-success {
+      background: var(--success);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(21, 128, 61, 0.3);
+    }
+
+    .btn-success:hover {
+      background: #166534;
+    }
+
+    .btn-outline {
+      background: #ffffff;
+      color: var(--text-main);
+      border: 1.5px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      background: var(--bg-subtle);
+      border-color: #94a3b8;
+    }
+
+    /* Inline Message Box (No alert) */
+    .msg-box {
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-md);
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-top: 0.75rem;
+      display: none;
+    }
+
+    .msg-box.show {
+      display: block;
+    }
+
+    .msg-box.error {
+      background: var(--danger-bg);
+      color: var(--danger);
+      border: 1px solid #fecaca;
+    }
+
+    .msg-box.info {
+      background: var(--primary-soft);
+      color: var(--primary);
+      border: 1px solid #bfdbfe;
+    }
+
+    /* Quiz Status Bar */
+    .quiz-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .student-pill {
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-weight: 700;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.92rem;
+    }
+
+    .timer-pill {
+      background: var(--bg-subtle);
+      border: 1.5px solid var(--border);
+      color: var(--text-main);
+      font-weight: 700;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      font-variant-numeric: tabular-nums;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .timer-pill.urgent {
+      background: var(--danger-bg);
+      border-color: #fca5a5;
+      color: var(--danger);
+      animation: pulse 1.2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.72; }
+    }
+
+    /* Progress Bar */
+    .progress-wrap {
+      margin-bottom: 1.25rem;
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 10px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #2563eb, #0d9488);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    /* Question Navigator Dots */
+    .q-nav {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+
+    .q-dot {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      background: #ffffff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .q-dot.active {
+      border-color: var(--primary);
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .q-dot.answered:not(.active) {
+      background: var(--primary-soft);
+      border-color: #93c5fd;
+      color: var(--primary);
+    }
+
+    .q-dot.correct-dot {
+      background: var(--success-bg);
+      border-color: #86efac;
+      color: var(--success);
+    }
+
+    .q-dot.wrong-dot {
+      background: var(--danger-bg);
+      border-color: #fca5a5;
+      color: var(--danger);
+    }
+
+    /* Question Body */
+    .q-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .q-number {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+    }
+
+    .q-topic-tag {
+      font-size: 0.78rem;
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      border: 1px solid var(--border-light);
+    }
+
+    .q-stem {
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 1.15rem;
+      line-height: 1.7;
+    }
+
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .option-btn {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      width: 100%;
+      text-align: left;
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius-md);
+      border: 2px solid var(--border-light);
+      background: #ffffff;
+      cursor: pointer;
+      font-size: 1rem;
+      color: var(--text-main);
+      transition: all 0.15s ease;
+    }
+
+    .option-btn:hover:not(:disabled) {
+      border-color: #93c5fd;
+      background: var(--bg-subtle);
+    }
+
+    .option-btn.selected {
+      border-color: var(--primary);
+      background: var(--primary-soft);
+    }
+
+    .option-btn.correct {
+      border-color: var(--success);
+      background: var(--success-bg);
+      color: #14532d;
+    }
+
+    .option-btn.incorrect {
+      border-color: var(--danger);
+      background: var(--danger-bg);
+      color: #7f1d1d;
+    }
+
+    .option-btn:disabled {
+      cursor: default;
+    }
+
+    .opt-prefix {
+      min-width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.88rem;
+      flex-shrink: 0;
+    }
+
+    .option-btn.selected .opt-prefix {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    .option-btn.correct .opt-prefix {
+      background: var(--success);
+      color: #ffffff;
+      border-color: var(--success);
+    }
+
+    .option-btn.incorrect .opt-prefix {
+      background: var(--danger);
+      color: #ffffff;
+      border-color: var(--danger);
+    }
+
+    /* Explanation Box */
+    .explanation-box {
+      margin-top: 1.15rem;
+      padding: 1rem 1.15rem;
+      border-radius: var(--radius-md);
+      background: #f8fafc;
+      border-left: 4px solid var(--accent);
+      border-top: 1px solid var(--border-light);
+      border-right: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .explanation-title {
+      font-weight: 800;
+      font-size: 0.92rem;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .explanation-text {
+      font-size: 0.94rem;
+      color: var(--text-main);
+      white-space: pre-line;
+      line-height: 1.65;
+    }
+
+    /* Nav Footer inside Quiz */
+    .quiz-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-light);
+    }
+
+    /* Summary Result Card */
+    .score-banner {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: linear-gradient(135deg, #eff6ff 0%, #f0fdfa 100%);
+      border-radius: var(--radius-lg);
+      border: 1px solid #bfdbfe;
+      margin-bottom: 1.25rem;
+    }
+
+    .score-big {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.1;
+      margin: 0.35rem 0;
+    }
+
+    .review-item {
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 1.1rem;
+      margin-bottom: 1rem;
+      background: #ffffff;
+    }
+
+    .review-item.is-right {
+      border-left: 5px solid var(--success);
+    }
+
+    .review-item.is-wrong {
+      border-left: 5px solid var(--danger);
+    }
+
+    /* Teacher Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      z-index: 50;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-panel {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 820px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+      overflow: hidden;
+    }
+
+    .modal-header {
+      padding: 1rem 1.25rem;
+      background: #0f172a;
+      color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-body {
+      padding: 1.25rem;
+      overflow-y: auto;
+    }
+
+    .teacher-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: flex-end;
+      background: var(--bg-subtle);
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+      margin-bottom: 1rem;
+    }
+
+    .teacher-notice {
+      background: var(--warning-bg);
+      border: 1px solid #fde68a;
+      color: #78350f;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-md);
+      font-size: 0.86rem;
+      margin-bottom: 1rem;
+    }
+
+    .stat-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .stat-chip {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      padding: 0.35rem 0.75rem;
+      border-radius: 8px;
+      font-size: 0.84rem;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1.25rem 1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-light);
+      background: #ffffff;
+      margin-top: auto;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 1.15rem;
+      }
+      .hero-title {
+        font-size: 1.25rem;
+      }
+      .q-stem {
+        font-size: 1rem;
+      }
+      .btn {
+        width: 100%;
+      }
+      .quiz-controls .btn {
+        width: auto;
+        flex: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ส่วนหัวเว็บไซต์ -->
+  <header>
+    <div class="header-inner">
+      <div>
+        <div class="brand-title">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="4"></rect>
+            <circle cx="8.5" cy="8.5" r="1.3" fill="currentColor"></circle>
+            <circle cx="15.5" cy="8.5" r="1.3" fill="currentColor"></circle>
+            <circle cx="12" cy="12" r="1.3" fill="currentColor"></circle>
+            <circle cx="8.5" cy="15.5" r="1.3" fill="currentColor"></circle>
+            <circle cx="15.5" cy="15.5" r="1.3" fill="currentColor"></circle>
+          </svg>
+          <span>คณิตศาสตร์เพิ่มเติม ม.4 : ความน่าจะเป็น</span>
+        </div>
+        <div class="brand-sub">โรงเรียนห้องสอนศึกษาา ในพระอุปถัมภ์ฯ | ผู้สร้าง: ครูสาธิต ศิริวัชน์</div>
+      </div>
+      <button type="button" id="btnOpenTeacher" class="btn-teacher" aria-label="เปิดโหมดครู">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+        <span>โหมดครู</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- หน้าจอที่ 1: ลงทะเบียนเลขที่นักเรียน -->
+    <section id="screenStart" class="card">
+      <div class="badge-row">
+        <span class="badge">คณิตศาสตร์เพิ่มเติม ม.4</span>
+        <span class="badge teal">เรื่อง ความน่าจะเป็น</span>
+        <span class="badge amber">ระดับท้าทาย / ประยุกต์</span>
+      </div>
+
+      <h1 class="hero-title">กิจกรรมฝึกทักษะการคำนวณความน่าจะเป็น</h1>
+      <p class="hero-desc">
+        จุดประสงค์การเรียนรู้: คำนวณเกี่ยวกับเนื้อหาความน่าจะเป็น ระบบจะสร้างชุดโจทย์เฉพาะบุคคลตาม <strong>เลขที่นักเรียน (1–40)</strong> โดยเลขที่เดิมจะได้ชุดโจทย์เดิมเสมอ สามารถฝึกซ้อมและดูคำอธิบายวิธีทำได้ทันที
+      </p>
+
+      <div class="info-grid">
+        <div class="info-box">
+          <div class="info-label">รูปแบบกิจกรรม</div>
+          <div class="info-val">ปรนัย 4 ตัวเลือก (5 ข้อ)</div>
+        </div>
+        <div class="info-box">
+          <div class="info-label">เวลาที่แนะนำ</div>
+          <div class="info-val">10 นาที (600 วินาที)</div>
+        </div>
+        <div class="info-box">
+          <div class="info-label">โหมดการเรียนรู้</div>
+          <div class="info-val">ฝึกซ้อม (แสดงเหตุผลและเฉลย)</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="studentNoInput">กรอกเลขที่นักเรียน (1 – 40)</label>
+        <input type="number" id="studentNoInput" min="1" max="40" step="1" placeholder="เช่น 15" inputmode="numeric" />
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;">
+        <button type="button" id="btnStartQuiz" class="btn btn-primary">
+          <span>เริ่มทำกิจกรรม</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <div id="startMsgBox" class="msg-box error" role="alert"></div>
+    </section>
+
+    <!-- หน้าจอที่ 2: ทำแบบทดสอบ -->
+    <section id="screenQuiz" class="card hidden">
+      <div class="quiz-topbar">
+        <div class="student-pill" id="activeStudentLabel">เลขที่: -</div>
+        <div class="timer-pill" id="timerDisplay">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span id="timerText">10:00</span>
+        </div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-meta">
+          <span id="progressLabel">ตอบแล้ว 0 จาก 5 ข้อ</span>
+          <span id="progressPercent">0%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressBar"></div>
+        </div>
+      </div>
+
+      <!-- ปุ่มเลือกข้อ -->
+      <div class="q-nav" id="questionNav" aria-label="แถบเลือกข้อสอบ"></div>
+
+      <!-- เนื้อหาโจทย์ข้อปัจจุบัน -->
+      <div id="questionContainer">
+        <div class="q-header">
+          <span class="q-number" id="qNumberText">ข้อที่ 1 / 5</span>
+          <span class="q-topic-tag" id="qTopicTag">การเรียงสับเปลี่ยนและความน่าจะเป็น</span>
+        </div>
+        <div class="q-stem" id="qStemText"></div>
+        <div class="options-list" id="optionsList"></div>
+
+        <!-- กล่องคำอธิบายเหตุผลหลังตอบ (โหมดฝึกซ้อม) -->
+        <div id="instantExplanationBox" class="explanation-box hidden">
+          <div class="explanation-title" id="instantFeedbackTitle">คำอธิบายและแนวคิด</div>
+          <div class="explanation-text" id="instantExplanationText"></div>
+        </div>
+      </div>
+
+      <div id="quizMsgBox" class="msg-box info" role="status"></div>
+
+      <div class="quiz-controls">
+        <button type="button" id="btnPrevQ" class="btn btn-outline">← ข้อก่อนหน้า</button>
+        <button type="button" id="btnNextQ" class="btn btn-outline">ข้อถัดไป →</button>
+        <button type="button" id="btnSubmitQuiz" class="btn btn-success">ตรวจ / ส่งคำตอบ</button>
+      </div>
+    </section>
+
+    <!-- หน้าจอที่ 3: สรุปผลคะแนนและเฉลยละเอียด -->
+    <section id="screenResult" class="card hidden">
+      <div class="score-banner">
+        <div style="font-weight: 700; color: var(--text-muted);" id="resultStudentInfo">ผลการฝึกซ้อม เลขที่ -</div>
+        <div class="score-big" id="resultScoreText">0 / 5 คะแนน</div>
+        <div style="font-size: 0.95rem; color: var(--text-muted);" id="resultTimeInfo">ใช้เวลาทำกิจกรรม -</div>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.5rem; justify-content: center;">
+        <button type="button" id="btnRetrySame" class="btn btn-primary">ฝึกซ้อมเลขที่เดิมอีกครั้ง</button>
+        <button type="button" id="btnChangeStudent" class="btn btn-outline">เปลี่ยนเลขที่นักเรียน</button>
+      </div>
+
+      <h2 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 1rem;">เฉลยละเอียดและคำอธิบายครบทั้ง 5 ข้อ</h2>
+      <div id="reviewContainer"></div>
+    </section>
+  </main>
+
+  <!-- Modal โหมดครู -->
+  <div id="teacherModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="teacherModalTitle">
+    <div class="modal-panel">
+      <div class="modal-header">
+        <h2 id="teacherModalTitle" style="font-size: 1.05rem; font-weight: 700;">โหมดครู : ตรวจสอบคลังโจทย์และเฉลยรายเลขที่ (1–40)</h2>
+        <button type="button" id="btnCloseTeacher" class="btn-teacher" style="padding: 0.35rem 0.75rem;">ปิดหน้าต่าง ✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="teacher-notice">
+          <strong>หมายเหตุทางเทคนิคสำหรับครูผู้สอน:</strong> เว็บแอปพลิเคชันนี้ประมวลผลฝั่งผู้เรียน (Client-Side) ทั้งหมด จึงไม่สามารถซ่อนสูตรคำนวณหรือเฉลยจากโค้ดเบราว์เซอร์ได้ 100% เหมาะสำหรับใช้ฝึกทักษะและการบ้านรายบุคคล โปรดตรวจสอบโจทย์และเฉลยก่อนนำไปใช้งานจริง
+        </div>
+
+        <div class="stat-chips" id="teacherStatsChips"></div>
+
+        <div class="teacher-toolbar">
+          <div style="flex: 1; min-width: 180px;">
+            <label for="teacherSeedInput" style="font-size: 0.85rem;">เลือกดูเลขที่นักเรียน (1–40)</label>
+            <input type="number" id="teacherSeedInput" min="1" max="40" value="1" style="padding: 0.5rem 0.75rem; font-size: 1rem;" />
+          </div>
+          <button type="button" id="btnTeacherInspect" class="btn btn-primary" style="padding: 0.55rem 1rem;">แสดงโจทย์และเฉลย</button>
+          <button type="button" id="btnTeacherPrev" class="btn btn-outline" style="padding: 0.55rem 0.85rem;">เลขที่ก่อนหน้า</button>
+          <button type="button" id="btnTeacherNext" class="btn btn-outline" style="padding: 0.55rem 0.85rem;">เลขที่ถัดไป</button>
+        </div>
+
+        <div id="teacherMsgBox" class="msg-box error"></div>
+        <div id="teacherPreviewList"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div><strong>รายวิชา คณิตศาสตร์เพิ่มเติม (ม.4)</strong> — เรื่อง ความน่าจะเป็น</div>
+    <div>ผู้สร้าง: <strong>ครูสาธิต ศิริวัชน์</strong> | โรงเรียน: <strong>โรงเรียนห้องสอนศึกษาา ในพระอุปถัมภ์ฯ</strong></div>
+  </footer>
+
+  <script>
+    (function () {
+      "use strict";
+
+      /* =========================================================================
+       * 1. DETERMINISTIC PRNG (Mulberry32) & MATH HELPERS
+       * ========================================================================= */
+      function createPRNG(seed) {
+        let a = seed >>> 0;
+        return function () {
+          let t = (a += 0x6d2b79f5);
+          t = Math.imul(t ^ (t >>> 15), t | 1);
+          t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+          return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+        };
+      }
+
+      function randInt(rng, min, max) {
+        return Math.floor(rng() * (max - min + 1)) + min;
+      }
+
+      function gcd(a, b) {
+        let x = Math.abs(Math.round(a));
+        let y = Math.abs(Math.round(b));
+        while (y !== 0) {
+          const temp = y;
+          y = x % y;
+          x = temp;
+        }
+        return x === 0 ? 1 : x;
+      }
+
+      function formatFraction(num, den) {
+        if (den === 0) return "ไม่นิยาม";
+        if (num === 0) return "0";
+        const sign = (num < 0) ^ (den < 0) ? "-" : "";
+        const n = Math.abs(Math.round(num));
+        const d = Math.abs(Math.round(den));
+        const g = gcd(n, d);
+        const rn = n / g;
+        const rd = d / g;
+        if (rd === 1) return sign + String(rn);
+        return sign + rn + "/" + rd;
+      }
+
+      function comb(n, r) {
+        if (r < 0 || r > n) return 0;
+        if (r === 0 || r === n) return 1;
+        let k = r;
+        if (k > n - k) k = n - k;
+        let res = 1;
+        for (let i = 1; i <= k; i++) {
+          res = (res * (n - i + 1)) / i;
+        }
+        return Math.round(res);
+      }
+
+      function deterministicShuffle(arr, rng) {
+        const copy = arr.slice();
+        for (let i = copy.length - 1; i > 0; i--) {
+          const j = Math.floor(rng() * (i + 1));
+          const tmp = copy[i];
+          copy[i] = copy[j];
+          copy[j] = tmp;
+        }
+        return copy;
+      }
+
+      /* =========================================================================
+       * 2. QUESTION GENERATORS (5 Applied Grade 10 Probability Problems)
+       *    Strategy A: Numerical Variation seeded by Student Number (1-40)
+       * ========================================================================= */
+      const THAI_PREFIXES = ["ก.", "ข.", "ค.", "ง."];
+
+      function buildChoices(correctText, distractorTexts, rng) {
+        const uniqueSet = new Set([correctText]);
+        const validDistractors = [];
+        for (let i = 0; i < distractorTexts.length; i++) {
+          const d = distractorTexts[i];
+          if (d && !uniqueSet.has(d)) {
+            uniqueSet.add(d);
+            validDistractors.push(d);
+          }
+        }
+        // Fallback safety if any distractor collided
+        let fallbackN = 1;
+        while (validDistractors.length < 3) {
+          const cand = formatFraction(fallbackN, fallbackN + 5);
+          if (!uniqueSet.has(cand)) {
+            uniqueSet.add(cand);
+            validDistractors.push(cand);
+          }
+          fallbackN++;
+        }
+
+        const rawOptions = [
+          { text: correctText, isCorrect: true },
+          { text: validDistractors[0], isCorrect: false },
+          { text: validDistractors[1], isCorrect: false },
+          { text: validDistractors[2], isCorrect: false }
+        ];
+
+        const shuffled = deterministicShuffle(rawOptions, rng);
+        const correctIndex = shuffled.findIndex(function (item) {
+          return item.isCorrect;
+        });
+
+        return {
+          options: shuffled.map(function (item, idx) {
+            return {
+              prefix: THAI_PREFIXES[idx],
+              text: item.text
+            };
+          }),
+          correctIndex: correctIndex,
+          correctAnswerText: correctText
+        };
+      }
+
+      // ข้อที่ 1: การหยิบลูกบอลพร้อมกัน (Combination + Complementary / At least 1)
+      function genQuestion1(studentNo) {
+        const rng = createPRNG(studentNo * 1009 + 101);
+        const red = randInt(rng, 4, 7);
+        const blue = randInt(rng, 3, 6);
+        const total = red + blue;
+        const pick = 3;
+
+        const nS = comb(total, pick);
+        const nNoneRed = comb(blue, pick);
+        const nE = nS - nNoneRed;
+
+        const ans = formatFraction(nE, nS);
+        // ตัวลวงสะท้อนความเข้าใจคลาดเคลื่อน:
+        // 1) คิดกรณีไม่มีสีแดงเลย P(E')
+        // 2) คิดกรณีได้สีแดงครบทั้ง 3 ลูก C(red, 3) / C(total, 3)
+        // 3) ลืมใช้การเลือกพร้อมกัน (ใช้ red / total)
+        const d1 = formatFraction(nNoneRed, nS);
+        const d2 = formatFraction(comb(red, pick), nS);
+        const d3 = formatFraction(red, total);
+
+        const built = buildChoices(ans, [d1, d2, d3], rng);
+        const stem =
+          "กล่องใบหนึ่งบรรจุลูกบอลสีแดง " +
+          red +
+          " ลูก และลูกบอลสีน้ำเงิน " +
+          blue +
+          " ลูก (รวม " +
+          total +
+          " ลูก) หากสุ่มหยิบลูกบอลขึ้นมาพร้อมกัน 3 ลูก จงหาความน่าจะเป็นที่จะได้ลูกบอลสีแดงอย่างน้อย 1 ลูก (ตอบเป็นเศษส่วนอย่างต่ำ)";
+
+        const explanation =
+          "• จำนวนวิธีทั้งหมดในปริภูมิตัวอย่าง n(S) = C(" +
+          total +
+          ", 3) = " +
+          nS +
+          " วิธี\n" +
+          "• เหตุการณ์ตรงข้าม (E') คือ ไม่ได้ลูกบอลสีแดงเลย (ได้สีน้ำเงินทั้ง 3 ลูก)\n" +
+          "  จะได้ n(E') = C(" +
+          blue +
+          ", 3) = " +
+          nNoneRed +
+          " วิธี\n" +
+          "• ดังนั้น จำนวนวิธีที่ได้สีแดงอย่างน้อย 1 ลูก n(E) = " +
+          nS +
+          " - " +
+          nNoneRed +
+          " = " +
+          nE +
+          " วิธี\n" +
+          "• ความน่าจะเป็น P(E) = " +
+          nE +
+          "/" +
+          nS +
+          " = " +
+          ans;
+
+        return {
+          id: 1,
+          topic: "การจัดหมู่และความน่าจะเป็น (อย่างน้อย 1)",
+          stem: stem,
+          options: built.options,
+          correctIndex: built.correctIndex,
+          correctAnswerText: built.correctAnswerText,
+          explanation: explanation
+        };
+      }
+
+      // ข้อที่ 2: การเรียงสับเปลี่ยนเชิงเส้นแบบติดกัน (Linear Permutation with Grouping)
+      function genQuestion2(studentNo) {
+        const rng = createPRNG(studentNo * 1009 + 202);
+        const boys = randInt(rng, 3, 5);
+        const girls = randInt(rng, 3, 4);
+        const total = boys + girls;
+
+        // ต้องการให้ผู้หญิงทุกคนยืนติดกันเสมอ:
+        // มัดผู้หญิงเป็น 1 กลุ่ม -> รวมสิ่งของ (boys + 1) ชิ้น เรียงได้ (boys + 1)! วิธี
+        // ภายในกลุ่มผู้หญิงสลับที่ได้ girls! วิธี
+        // P(E) = ((boys + 1)! * girls!) / total! = (girls! * (boys + 1)!) / total!
+        // ลดรูป: (girls * (girls - 1) * ... * 1) / (total * (total - 1) * ... * (boys + 2))
+        let num = 1;
+        for (let i = 1; i <= girls; i++) num *= i;
+        let den = 1;
+        for (let j = boys + 2; j <= total; j++) den *= j;
+
+        const ans = formatFraction(num, den);
+        // ตัวลวง:
+        // 1) ลืมคูณ girls! ภายในกลุ่ม -> (boys + 1)! / total!
+        const d1 = formatFraction(1, den);
+        // 2) สลับเอาผู้ชายมัดติดกันแทน -> (girls + 1)! * boys! / total!
+        let numBoys = 1;
+        for (let i = 1; i <= boys; i++) numBoys *= i;
+        let denBoys = 1;
+        for (let j = girls + 2; j <= total; j++) denBoys *= j;
+        const d2 = formatFraction(numBoys, denBoys);
+        // 3) คิดแบบอัตราส่วนอย่างง่าย girls / total
+        const d3 = formatFraction(girls, total);
+
+        const built = buildChoices(ans, [d1, d2, d3], rng);
+        const stem =
+          "นักเรียนชาย " +
+          boys +
+          " คน และนักเรียนหญิง " +
+          girls +
+          " คน ยืนเข้าแถวตรงเพื่อถ่ายภาพร่วมกันแบบสุ่ม จงหาความน่าจะเป็นที่นักเรียนหญิงทุกคนจะได้ยืนติดกันเสมอ (ตอบเป็นเศษส่วนอย่างต่ำ)";
+
+        const explanation =
+          "• จำนวนวิธีเรียงสับเปลี่ยนทั้งหมดของคน " +
+          total +
+          " คน คือ n(S) = " +
+          total +
+          "!\n" +
+          "• มัดนักเรียนหญิง " +
+          girls +
+          " คนเป็น 1 กลุ่มใหญ่ นำไปเรียงกับนักเรียนชาย " +
+          boys +
+          " คน ได้ (" +
+          boys +
+          " + 1)! = " +
+          (boys + 1) +
+          "! วิธี\n" +
+          "• ภายในกลุ่มนักเรียนหญิงสลับที่กันเองได้ " +
+          girls +
+          "! วิธี ดังนั้น n(E) = " +
+          (boys + 1) +
+          "! × " +
+          girls +
+          "!\n" +
+          "• ความน่าจะเป็น P(E) = (" +
+          (boys + 1) +
+          "! × " +
+          girls +
+          "!) / " +
+          total +
+          "! = " +
+          ans;
+
+        return {
+          id: 2,
+          topic: "การเรียงสับเปลี่ยนเชิงเส้น (เงื่อนไขติดกัน)",
+          stem: stem,
+          options: built.options,
+          correctIndex: built.correctIndex,
+          correctAnswerText: built.correctAnswerText,
+          explanation: explanation
+        };
+      }
+
+      // ข้อที่ 3: กฎการบวกของความน่าจะเป็น P(A U B) = P(A) + P(B) - P(A ∩ B)
+      function genQuestion3(studentNo) {
+        const rng = createPRNG(studentNo * 1009 + 303);
+        const maxNum = randInt(rng, 24, 45);
+        const divA = 3;
+        const divB = randInt(rng, 0, 1) === 0 ? 4 : 5;
+        const lcmAB = divA * divB; // gcd(3,4)=1, gcd(3,5)=1
+
+        const countA = Math.floor(maxNum / divA);
+        const countB = Math.floor(maxNum / divB);
+        const countAB = Math.floor(maxNum / lcmAB);
+        const nE = countA + countB - countAB;
+
+        const ans = formatFraction(nE, maxNum);
+        // ตัวลวง:
+        // 1) ลืมหักส่วนที่ซ้ำ (countA + countB) / maxNum
+        const d1 = formatFraction(countA + countB, maxNum);
+        // 2) หักส่วนซ้ำซ้อน 2 ครั้ง (countA + countB - 2*countAB) / maxNum
+        const d2 = formatFraction(Math.max(1, nE - countAB), maxNum);
+        // 3) ตอบเฉพาะตัวที่หารทั้งคู่ลงตัว countAB / maxNum
+        const d3 = formatFraction(countAB, maxNum);
+
+        const built = buildChoices(ans, [d1, d2, d3], rng);
+        const stem =
+          "สุ่มหยิบบัตรหมายเลข 1 ใบ จากกล่องที่มีบัตรหมายเลข 1 ถึง " +
+          maxNum +
+          " จงหาความน่าจะเป็นที่จะได้บัตรหมายเลขที่หารด้วย " +
+          divA +
+          " ลงตัว หรือหารด้วย " +
+          divB +
+          " ลงตัว (ตอบเป็นเศษส่วนอย่างต่ำ)";
+
+        const explanation =
+          "• ปริภูมิตัวอย่างมีจำนวนสมาชิก n(S) = " +
+          maxNum +
+          " ตัว\n" +
+          "• จำนวนที่หารด้วย " +
+          divA +
+          " ลงตัว มี n(A) = ⌊" +
+          maxNum +
+          "/" +
+          divA +
+          "⌋ = " +
+          countA +
+          " ตัว\n" +
+          "• จำนวนที่หารด้วย " +
+          divB +
+          " ลงตัว มี n(B) = ⌊" +
+          maxNum +
+          "/" +
+          divB +
+          "⌋ = " +
+          countB +
+          " ตัว\n" +
+          "• จำนวนที่หารด้วย ค.ร.น. (" +
+          lcmAB +
+          ") ลงตัว มี n(A ∩ B) = ⌊" +
+          maxNum +
+          "/" +
+          lcmAB +
+          "⌋ = " +
+          countAB +
+          " ตัว\n" +
+          "• จากสูตร n(A ∪ B) = " +
+          countA +
+          " + " +
+          countB +
+          " - " +
+          countAB +
+          " = " +
+          nE +
+          " จะได้ P(A ∪ B) = " +
+          nE +
+          "/" +
+          maxNum +
+          " = " +
+          ans;
+
+        return {
+          id: 3,
+          topic: "กฎการบวกของความน่าจะเป็น",
+          stem: stem,
+          options: built.options,
+          correctIndex: built.correctIndex,
+          correctAnswerText: built.correctAnswerText,
+          explanation: explanation
+        };
+      }
+
+      // ข้อที่ 4: การจัดเรียงวงกลม (Circular Permutation)
+      function genQuestion4(studentNo) {
+        const rng = createPRNG(studentNo * 1009 + 404);
+        const others = randInt(rng, 4, 7);
+        const total = others + 2; // ประธาน + รองประธาน + กรรมการอื่น
+
+        // ต้องการให้ประธานและรองประธานนั่งตรงข้ามกันเสมอ:
+        // ปักหมุดประธาน 1 ที่ -> รองประธานถูกบังคับนั่งตรงข้ามได้ 1 วิธี -> ที่เหลือ others คนนั่งได้ others! วิธี
+        // P(E) = others! / (total - 1)! = others! / (others + 1)! = 1 / (others + 1)
+        const ans = formatFraction(1, others + 1);
+        // ตัวลวง:
+        // 1) คิดแบบนั่งติดกันแทน 2 / (others + 1)
+        const d1 = formatFraction(2, others + 1);
+        // 2) ลืมลบ 1 ในสูตรวงกลม ใช้ total แทน (total - 1) -> 1 / total
+        const d2 = formatFraction(1, total);
+        // 3) ตอบ 2 / total
+        const d3 = formatFraction(2, total);
+
+        const built = buildChoices(ans, [d1, d2, d3], rng);
+        const stem =
+          "คณะกรรมการนักเรียนจำนวน " +
+          total +
+          " คน ซึ่งประกอบด้วยประธาน รองประธาน และกรรมการอื่นอีก " +
+          others +
+          " คน นั่งประชุมรอบโต๊ะกลมแบบสุ่ม จงหาความน่าจะเป็นที่ประธานและรองประธานจะได้นั่งตรงข้ามกันพอดี (ตอบเป็นเศษส่วนอย่างต่ำ)";
+
+        const explanation =
+          "• จำนวนวิธีจัดคน " +
+          total +
+          " คน นั่งรอบโต๊ะกลมทั้งหมด คือ n(S) = (" +
+          total +
+          " - 1)! = " +
+          (total - 1) +
+          "! วิธี\n" +
+          "• ให้ประธานเลือกนั่งก่อนเป็นจุดอ้างอิง (1 วิธี) รองประธานต้องนั่งตำแหน่งตรงข้ามพอดี (เลือกได้ 1 วิธี)\n" +
+          "• กรรมการที่เหลืออีก " +
+          others +
+          " คน จัดเรียงในที่นั่งที่เหลือได้ " +
+          others +
+          "! วิธี ดังนั้น n(E) = 1 × 1 × " +
+          others +
+          "! = " +
+          others +
+          "!\n" +
+          "• ความน่าจะเป็น P(E) = " +
+          others +
+          "! / " +
+          (total - 1) +
+          "! = 1 / " +
+          (others + 1);
+
+        return {
+          id: 4,
+          topic: "การเรียงสับเปลี่ยนเชิงวงกลม",
+          stem: stem,
+          options: built.options,
+          correctIndex: built.correctIndex,
+          correctAnswerText: built.correctAnswerText,
+          explanation: explanation
+        };
+      }
+
+      // ข้อที่ 5: ความน่าจะเป็นมีเงื่อนไข / ทฤษฎีบทของเบส์เบื้องต้น (Two-step Conditional / Total Probability)
+      function genQuestion5(studentNo) {
+        const rng = createPRNG(studentNo * 1009 + 505);
+        // กล่อง A มีเหรียญทอง g1, เหรียญเงิน s1 (รวม t1)
+        // กล่อง B มีเหรียญทอง g2, เหรียญเงิน s2 (รวม t2)
+        // สุ่มเลือกกล่อง 1 ใบ แล้วหยิบ 1 เหรียญ -> ความน่าจะเป็นที่ได้เหรียญทอง
+        const g1 = randInt(rng, 2, 5);
+        const s1 = randInt(rng, 2, 5);
+        const g2 = randInt(rng, 3, 6);
+        const s2 = randInt(rng, 1, 4);
+
+        const t1 = g1 + s1;
+        const t2 = g2 + s2;
+
+        // P(ทอง) = (1/2)*(g1/t1) + (1/2)*(g2/t2) = (g1*t2 + g2*t1) / (2 * t1 * t2)
+        const num = g1 * t2 + g2 * t1;
+        const den = 2 * t1 * t2;
+        const ans = formatFraction(num, den);
+
+        // ตัวลวง:
+        // 1) จับเหรียญรวมกันทั้ง 2 กล่องโดยไม่ถ่วงน้ำหนักโอกาสเลือกกล่อง -> (g1 + g2) / (t1 + t2)
+        const d1 = formatFraction(g1 + g2, t1 + t2);
+        // 2) ลืมคูณ 1/2 โอกาสเลือกกล่อง -> (g1*t2 + g2*t1) / (t1 * t2)
+        const d2 = formatFraction(num, t1 * t2);
+        // 3) คูณโอกาสหยิบทองทั้งสองกล่องพร้อมกัน -> (g1 * g2) / (t1 * t2)
+        const d3 = formatFraction(g1 * g2, t1 * t2);
+
+        const built = buildChoices(ans, [d1, d2, d3], rng);
+        const stem =
+          "กล่องใบที่หนึ่งมีเหรียญรางวัลสีทอง " +
+          g1 +
+          " เหรียญ และสีเงิน " +
+          s1 +
+          " เหรียญ ส่วนกล่องใบที่สองมีเหรียญรางวัลสีทอง " +
+          g2 +
+          " เหรียญ และสีเงิน " +
+          s2 +
+          " เหรียญ หากสุ่มเลือกกล่องมา 1 ใบ แล้วสุ่มหยิบเหรียญจากกล่องนั้น 1 เหรียญ จงหาความน่าจะเป็นที่จะหยิบได้เหรียญสีทอง (ตอบเป็นเศษส่วนอย่างต่ำ)";
+
+        const explanation =
+          "• โอกาสสุ่มเลือกกล่องแต่ละใบเท่ากับ 1/2\n" +
+          "• กรณีที่ 1: เลือกกล่องที่หนึ่งและได้เหรียญทอง = (1/2) × (" +
+          g1 +
+          "/" +
+          t1 +
+          ") = " +
+          formatFraction(g1, 2 * t1) +
+          "\n" +
+          "• กรณีที่ 2: เลือกกล่องที่สองและได้เหรียญทอง = (1/2) × (" +
+          g2 +
+          "/" +
+          t2 +
+          ") = " +
+          formatFraction(g2, 2 * t2) +
+          "\n" +
+          "• นำความน่าจะเป็นทั้งสองกรณีมารวมกัน:\n" +
+          "  P(ได้เหรียญทอง) = " +
+          formatFraction(g1, 2 * t1) +
+          " + " +
+          formatFraction(g2, 2 * t2) +
+          " = " +
+          ans;
+
+        return {
+          id: 5,
+          topic: "ความน่าจะเป็นรวมและเหตุการณ์ต่อเนื่อง",
+          stem: stem,
+          options: built.options,
+          correctIndex: built.correctIndex,
+          correctAnswerText: built.correctAnswerText,
+          explanation: explanation
+        };
+      }
+
+      function generateQuizSet(studentNo) {
+        return [
+          genQuestion1(studentNo),
+          genQuestion2(studentNo),
+          genQuestion3(studentNo),
+          genQuestion4(studentNo),
+          genQuestion5(studentNo)
+        ];
+      }
+
+      /* =========================================================================
+       * 3. APPLICATION STATE & SAFE STORAGE
+       * ========================================================================= */
+      const TOTAL_SECONDS = 600; // 10 minutes
+      const state = {
+        studentNo: null,
+        questions: [],
+        userAnswers: [null, null, null, null, null],
+        currentIndex: 0,
+        submitted: false,
+        secondsLeft: TOTAL_SECONDS,
+        timerId: null
+      };
+
+      function saveLastStudentNo(no) {
+        try {
+          window.localStorage.setItem("prob_m4_last_student", String(no));
+        } catch (e) {
+          // Ignore storage restrictions in sandbox
+        }
+      }
+
+      function loadLastStudentNo() {
+        try {
+          return window.localStorage.getItem("prob_m4_last_student") || "";
+        } catch (e) {
+          return "";
+        }
+      }
+
+      /* =========================================================================
+       * 4. DOM REFERENCES
+       * ========================================================================= */
+      const screenStart = document.getElementById("screenStart");
+      const screenQuiz = document.getElementById("screenQuiz");
+      const screenResult = document.getElementById("screenResult");
+
+      const studentNoInput = document.getElementById("studentNoInput");
+      const btnStartQuiz = document.getElementById("btnStartQuiz");
+      const startMsgBox = document.getElementById("startMsgBox");
+
+      const activeStudentLabel = document.getElementById("activeStudentLabel");
+      const timerDisplay = document.getElementById("timerDisplay");
+      const timerText = document.getElementById("timerText");
+      const progressLabel = document.getElementById("progressLabel");
+      const progressPercent = document.getElementById("progressPercent");
+      const progressBar = document.getElementById("progressBar");
+      const questionNav = document.getElementById("questionNav");
+
+      const qNumberText = document.getElementById("qNumberText");
+      const qTopicTag = document.getElementById("qTopicTag");
+      const qStemText = document.getElementById("qStemText");
+      const optionsList = document.getElementById("optionsList");
+      const instantExplanationBox = document.getElementById("instantExplanationBox");
+      const instantFeedbackTitle = document.getElementById("instantFeedbackTitle");
+      const instantExplanationText = document.getElementById("instantExplanationText");
+      const quizMsgBox = document.getElementById("quizMsgBox");
+
+      const btnPrevQ = document.getElementById("btnPrevQ");
+      const btnNextQ = document.getElementById("btnNextQ");
+      const btnSubmitQuiz = document.getElementById("btnSubmitQuiz");
+
+      const resultStudentInfo = document.getElementById("resultStudentInfo");
+      const resultScoreText = document.getElementById("resultScoreText");
+      const resultTimeInfo = document.getElementById("resultTimeInfo");
+      const reviewContainer = document.getElementById("reviewContainer");
+      const btnRetrySame = document.getElementById("btnRetrySame");
+      const btnChangeStudent = document.getElementById("btnChangeStudent");
+
+      // Teacher Modal Elements
+      const btnOpenTeacher = document.getElementById("btnOpenTeacher");
+      const teacherModal = document.getElementById("teacherModal");
+      const btnCloseTeacher = document.getElementById("btnCloseTeacher");
+      const teacherSeedInput = document.getElementById("teacherSeedInput");
+      const btnTeacherInspect = document.getElementById("btnTeacherInspect");
+      const btnTeacherPrev = document.getElementById("btnTeacherPrev");
+      const btnTeacherNext = document.getElementById("btnTeacherNext");
+      const teacherMsgBox = document.getElementById("teacherMsgBox");
+      const teacherPreviewList = document.getElementById("teacherPreviewList");
+      const teacherStatsChips = document.getElementById("teacherStatsChips");
+
+      /* =========================================================================
+       * 5. HELPER UI FUNCTIONS
+       * ========================================================================= */
+      function showMessage(el, text, type) {
+        if (!text) {
+          el.classList.remove("show");
+          el.textContent = "";
+          return;
+        }
+        el.className = "msg-box show " + (type || "info");
+        el.textContent = text;
+      }
+
+      function formatTime(sec) {
+        const s = Math.max(0, sec);
+        const mins = Math.floor(s / 60);
+        const rem = s % 60;
+        return String(mins).padStart(2, "0") + ":" + String(rem).padStart(2, "0");
+      }
+
+      function stopTimer() {
+        if (state.timerId !== null) {
+          clearInterval(state.timerId);
+          state.timerId = null;
+        }
+      }
+
+      function startTimer() {
+        stopTimer();
+        state.secondsLeft = TOTAL_SECONDS;
+        timerDisplay.classList.remove("urgent");
+        timerText.textContent = formatTime(state.secondsLeft);
+
+        state.timerId = setInterval(function () {
+          state.secondsLeft--;
+          timerText.textContent = formatTime(state.secondsLeft);
+
+          if (state.secondsLeft <= 60) {
+            timerDisplay.classList.add("urgent");
+          }
+
+          if (state.secondsLeft <= 0) {
+            stopTimer();
+            finalizeQuiz(true);
+          }
+        }, 1000);
+      }
+
+      /* =========================================================================
+       * 6. QUIZ FLOW & RENDERING
+       * ========================================================================= */
+      function startSession(studentNo) {
+        state.studentNo = studentNo;
+        state.questions = generateQuizSet(studentNo);
+        state.userAnswers = [null, null, null, null, null];
+        state.currentIndex = 0;
+        state.submitted = false;
+
+        saveLastStudentNo(studentNo);
+        activeStudentLabel.textContent = "เลขที่: " + studentNo + " (ชุดโจทย์เฉพาะบุคคล)";
+        showMessage(quizMsgBox, "", "info");
+
+        screenStart.classList.add("hidden");
+        screenResult.classList.add("hidden");
+        screenQuiz.classList.remove("hidden");
+
+        startTimer();
+        renderQuiz();
+      }
+
+      function renderQuiz() {
+        const idx = state.currentIndex;
+        const q = state.questions[idx];
+        const chosen = state.userAnswers[idx];
+
+        // Update progress
+        const answeredCount = state.userAnswers.filter(function (v) {
+          return v !== null;
+        }).length;
+        const pct = Math.round((answeredCount / state.questions.length) * 100);
+        progressLabel.textContent = "ตอบแล้ว " + answeredCount + " จาก " + state.questions.length + " ข้อ";
+        progressPercent.textContent = pct + "%";
+        progressBar.style.width = pct + "%";
+
+        // Render nav dots
+        questionNav.innerHTML = "";
+        state.questions.forEach(function (item, i) {
+          const dot = document.createElement("button");
+          dot.type = "button";
+          dot.className = "q-dot";
+          dot.textContent = String(i + 1);
+          if (i === idx) dot.classList.add("active");
+          if (state.userAnswers[i] !== null) {
+            dot.classList.add("answered");
+            if (state.userAnswers[i] === item.correctIndex) {
+              dot.classList.add("correct-dot");
+            } else {
+              dot.classList.add("wrong-dot");
+            }
+          }
+          dot.addEventListener("click", function () {
+            state.currentIndex = i;
+            showMessage(quizMsgBox, "", "info");
+            renderQuiz();
+          });
+          questionNav.appendChild(dot);
+        });
+
+        // Render stem
+        qNumberText.textContent = "ข้อที่ " + (idx + 1) + " / " + state.questions.length;
+        qTopicTag.textContent = q.topic;
+        qStemText.textContent = q.stem;
+
+        // Render options (Practice Mode shows immediate feedback once chosen)
+        optionsList.innerHTML = "";
+        q.options.forEach(function (opt, optIdx) {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "option-btn";
+
+          if (chosen !== null) {
+            if (optIdx === q.correctIndex) {
+              btn.classList.add("correct");
+            } else if (optIdx === chosen && chosen !== q.correctIndex) {
+              btn.classList.add("incorrect");
+            }
+          }
+
+          const prefixSpan = document.createElement("span");
+          prefixSpan.className = "opt-prefix";
+          prefixSpan.textContent = opt.prefix;
+
+          const textSpan = document.createElement("span");
+          textSpan.textContent = opt.text;
+
+          btn.appendChild(prefixSpan);
+          btn.appendChild(textSpan);
+
+          btn.addEventListener("click", function () {
+            state.userAnswers[idx] = optIdx;
+            showMessage(quizMsgBox, "", "info");
+            renderQuiz();
+          });
+
+          optionsList.appendChild(btn);
+        });
+
+        // Show instant explanation in practice mode after user selects an option
+        if (chosen !== null) {
+          instantExplanationBox.classList.remove("hidden");
+          if (chosen === q.correctIndex) {
+            instantFeedbackTitle.textContent = "✓ ถูกต้อง! คำอธิบายและแนวคิด";
+            instantFeedbackTitle.style.color = "var(--success)";
+          } else {
+            instantFeedbackTitle.textContent =
+              "✕ ยังไม่ตรงกับเฉลย (คำตอบที่ถูกคือ " +
+              q.options[q.correctIndex].prefix +
+              " " +
+              q.correctAnswerText +
+              ")";
+            instantFeedbackTitle.style.color = "var(--danger)";
+          }
+          instantExplanationText.textContent = q.explanation;
+        } else {
+          instantExplanationBox.classList.add("hidden");
+        }
+
+        // Prev / Next buttons
+        btnPrevQ.disabled = idx === 0;
+        btnPrevQ.style.opacity = idx === 0 ? "0.5" : "1";
+        btnNextQ.disabled = idx === state.questions.length - 1;
+        btnNextQ.style.opacity = idx === state.questions.length - 1 ? "0.5" : "1";
+      }
+
+      function finalizeQuiz(isTimeout) {
+        stopTimer();
+        state.submitted = true;
+
+        let score = 0;
+        state.questions.forEach(function (q, idx) {
+          if (state.userAnswers[idx] === q.correctIndex) {
+            score++;
+          }
+        });
+
+        const usedSec = Math.max(1, TOTAL_SECONDS - state.secondsLeft);
+        resultStudentInfo.textContent =
+          "ผลการฝึกซ้อม เลขที่ " +
+          state.studentNo +
+          (isTimeout ? " (หมดเวลาทำกิจกรรม)" : "");
+        resultScoreText.textContent = score + " / " + state.questions.length + " คะแนน";
+        resultTimeInfo.textContent = "ใช้เวลาทั้งสิ้น " + formatTime(usedSec) + " นาที";
+
+        // Build full solution review
+        reviewContainer.innerHTML = "";
+        state.questions.forEach(function (q, idx) {
+          const userPick = state.userAnswers[idx];
+          const isRight = userPick === q.correctIndex;
+
+          const card = document.createElement("div");
+          card.className = "review-item " + (isRight ? "is-right" : "is-wrong");
+
+          const head = document.createElement("div");
+          head.style.fontWeight = "800";
+          head.style.marginBottom = "0.4rem";
+          head.style.color = isRight ? "var(--success)" : "var(--danger)";
+          head.textContent =
+            "ข้อที่ " +
+            (idx + 1) +
+            " : " +
+            (isRight ? "ตอบถูกต้อง (+1 คะแนน)" : "ตอบไม่ถูกต้อง (0 คะแนน)");
+
+          const stemEl = document.createElement("div");
+          stemEl.style.fontWeight = "600";
+          stemEl.style.marginBottom = "0.5rem";
+          stemEl.textContent = q.stem;
+
+          const ansLine = document.createElement("div");
+          ansLine.style.fontSize = "0.92rem";
+          ansLine.style.marginBottom = "0.5rem";
+          const userStr =
+            userPick !== null
+              ? q.options[userPick].prefix + " " + q.options[userPick].text
+              : "ไม่ได้เลือกคำตอบ";
+          const rightStr =
+            q.options[q.correctIndex].prefix + " " + q.correctAnswerText;
+          ansLine.textContent =
+            "คำตอบของคุณ: " + userStr + "  |  เฉลยที่ถูกต้อง: " + rightStr;
+
+          const expBox = document.createElement("div");
+          expBox.className = "explanation-box";
+          expBox.style.marginTop = "0.5rem";
+
+          const expTitle = document.createElement("div");
+          expTitle.className = "explanation-title";
+          expTitle.textContent = "วิธีคิดและคำอธิบาย";
+
+          const expBody = document.createElement("div");
+          expBody.className = "explanation-text";
+          expBody.textContent = q.explanation;
+
+          expBox.appendChild(expTitle);
+          expBox.appendChild(expBody);
+
+          card.appendChild(head);
+          card.appendChild(stemEl);
+          card.appendChild(ansLine);
+          card.appendChild(expBox);
+          reviewContainer.appendChild(card);
+        });
+
+        screenQuiz.classList.add("hidden");
+        screenResult.classList.remove("hidden");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      /* =========================================================================
+       * 7. TEACHER MODE & UNIQUENESS ANALYTICS (1–40)
+       * ========================================================================= */
+      function computeUniquenessStats() {
+        const signatures = new Set();
+        for (let s = 1; s <= 40; s++) {
+          const qs = generateQuizSet(s);
+          const sig = qs
+            .map(function (q) {
+              return q.stem + "=" + q.correctAnswerText;
+            })
+            .join("|");
+          signatures.add(sig);
+        }
+        const uniqueSets = signatures.size;
+        const dupRate = (((40 - uniqueSets) / 40) * 100).toFixed(1);
+
+        teacherStatsChips.innerHTML = "";
+        const chips = [
+          "จำนวนเลขที่รองรับ: 1–40 (40 ชุด)",
+          "ชุดโจทย์ที่ไม่ซ้ำกันเลย: " + uniqueSets + " / 40 ชุด",
+          "อัตราความซ้ำทั้งชุด: " + dupRate + "%"
+        ];
+        chips.forEach(function (txt) {
+          const span = document.createElement("span");
+          span.className = "stat-chip";
+          span.textContent = txt;
+          teacherStatsChips.appendChild(span);
+        });
+      }
+
+      function renderTeacherPreview(seedNo) {
+        const num = Number(seedNo);
+        if (!Number.isInteger(num) || num < 1 || num > 40) {
+          showMessage(teacherMsgBox, "กรุณากรอกเลขที่นักเรียนเป็นจำนวนเต็มระหว่าง 1 ถึง 40", "error");
+          return;
+        }
+        showMessage(teacherMsgBox, "", "error");
+        teacherSeedInput.value = String(num);
+
+        const qs = generateQuizSet(num);
+        teacherPreviewList.innerHTML = "";
+
+        const heading = document.createElement("div");
+        heading.style.fontWeight = "800";
+        heading.style.fontSize = "1rem";
+        heading.style.marginBottom = "0.75rem";
+        heading.style.color = "var(--primary)";
+        heading.textContent = "ชุดโจทย์และเฉลยสำหรับเลขที่ " + num;
+        teacherPreviewList.appendChild(heading);
+
+        qs.forEach(function (q, idx) {
+          const box = document.createElement("div");
+          box.className = "review-item is-right";
+
+          const qHead = document.createElement("div");
+          qHead.style.fontWeight = "800";
+          qHead.style.marginBottom = "0.3rem";
+          qHead.textContent = "ข้อที่ " + (idx + 1) + " (" + q.topic + ")";
+
+          const qBody = document.createElement("div");
+          qBody.style.marginBottom = "0.5rem";
+          qBody.textContent = q.stem;
+
+          const optRow = document.createElement("div");
+          optRow.style.fontSize = "0.9rem";
+          optRow.style.color = "var(--text-muted)";
+          optRow.style.marginBottom = "0.5rem";
+          optRow.textContent =
+            "ตัวเลือก: " +
+            q.options
+              .map(function (o) {
+                return o.prefix + " " + o.text;
+              })
+              .join("   |   ");
+
+          const ansBadge = document.createElement("div");
+          ansBadge.style.fontWeight = "800";
+          ansBadge.style.color = "var(--success)";
+          ansBadge.style.marginBottom = "0.4rem";
+          ansBadge.textContent =
+            "เฉลย: " + q.options[q.correctIndex].prefix + " " + q.correctAnswerText;
+
+          const expEl = document.createElement("div");
+          expEl.className = "explanation-text";
+          expEl.style.background = "var(--bg-subtle)";
+          expEl.style.padding = "0.65rem 0.85rem";
+          expEl.style.borderRadius = "8px";
+          expEl.textContent = q.explanation;
+
+          box.appendChild(qHead);
+          box.appendChild(qBody);
+          box.appendChild(optRow);
+          box.appendChild(ansBadge);
+          box.appendChild(expEl);
+          teacherPreviewList.appendChild(box);
+        });
+      }
+
+      /* =========================================================================
+       * 8. EVENT LISTENERS
+       * ========================================================================= */
+      btnStartQuiz.addEventListener("click", function () {
+        const raw = studentNoInput.value.trim();
+        const num = Number(raw);
+        if (!raw || !Number.isInteger(num) || num < 1 || num > 40) {
+          showMessage(
+            startMsgBox,
+            "กรุณากรอกเลขที่นักเรียนให้ถูกต้อง (ตัวเลขจำนวนเต็ม 1 ถึง 40 เท่านั้น)",
+            "error"
+          );
+          studentNoInput.focus();
+          return;
+        }
+        showMessage(startMsgBox, "", "error");
+        startSession(num);
+      });
+
+      studentNoInput.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+          btnStartQuiz.click();
+        }
+      });
+
+      btnPrevQ.addEventListener("click", function () {
+        if (state.currentIndex > 0) {
+          state.currentIndex--;
+          showMessage(quizMsgBox, "", "info");
+          renderQuiz();
+        }
+      });
+
+      btnNextQ.addEventListener("click", function () {
+        if (state.currentIndex < state.questions.length - 1) {
+          state.currentIndex++;
+          showMessage(quizMsgBox, "", "info");
+          renderQuiz();
+        }
+      });
+
+      btnSubmitQuiz.addEventListener("click", function () {
+        const unanswered = [];
+        state.userAnswers.forEach(function (ans, i) {
+          if (ans === null) unanswered.push(i + 1);
+        });
+
+        // Graceful inline confirmation without confirm()
+        if (unanswered.length > 0 && !btnSubmitQuiz.dataset.confirmed) {
+          btnSubmitQuiz.dataset.confirmed = "1";
+          btnSubmitQuiz.textContent = "ยืนยันส่งคำตอบทันที";
+          showMessage(
+            quizMsgBox,
+            "คุณยังไม่ได้ตอบข้อที่ " +
+              unanswered.join(", ") +
+              " — หากต้องการส่งคำตอบเลย กดปุ่ม \"ยืนยันส่งคำตอบทันที\" อีกครั้ง",
+            "info"
+          );
+          return;
+        }
+
+        delete btnSubmitQuiz.dataset.confirmed;
+        btnSubmitQuiz.textContent = "ตรวจ / ส่งคำตอบ";
+        finalizeQuiz(false);
+      });
+
+      btnRetrySame.addEventListener("click", function () {
+        if (state.studentNo !== null) {
+          startSession(state.studentNo);
+        }
+      });
+
+      btnChangeStudent.addEventListener("click", function () {
+        stopTimer();
+        screenResult.classList.add("hidden");
+        screenQuiz.classList.add("hidden");
+        screenStart.classList.remove("hidden");
+        studentNoInput.focus();
+      });
+
+      // Teacher Modal Events
+      btnOpenTeacher.addEventListener("click", function () {
+        computeUniquenessStats();
+        const initialSeed = state.studentNo || Number(teacherSeedInput.value) || 1;
+        renderTeacherPreview(initialSeed);
+        teacherModal.classList.add("open");
+      });
+
+      btnCloseTeacher.addEventListener("click", function () {
+        teacherModal.classList.remove("open");
+      });
+
+      teacherModal.addEventListener("click", function (e) {
+        if (e.target === teacherModal) {
+          teacherModal.classList.remove("open");
+        }
+      });
+
+      btnTeacherInspect.addEventListener("click", function () {
+        renderTeacherPreview(teacherSeedInput.value.trim());
+      });
+
+      teacherSeedInput.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+          renderTeacherPreview(teacherSeedInput.value.trim());
+        }
+      });
+
+      btnTeacherPrev.addEventListener("click", function () {
+        const cur = Number(teacherSeedInput.value) || 1;
+        const prev = cur <= 1 ? 40 : cur - 1;
+        renderTeacherPreview(prev);
+      });
+
+      btnTeacherNext.addEventListener("click", function () {
+        const cur = Number(teacherSeedInput.value) || 1;
+        const next = cur >= 40 ? 1 : cur + 1;
+        renderTeacherPreview(next);
+      });
+
+      // Initialize saved student number if available
+      const savedNo = loadLastStudentNo();
+      if (savedNo) {
+        studentNoInput.value = savedNo;
+      }
+    })();
+  </script>
+</body>
+</html>
